@@ -4,7 +4,8 @@
   "description": "fullstack app with express and angular",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index",
+    "server": "nodemon index"
   },
   "repository": {
     "type": "git",
@@ -19,5 +20,11 @@
   "bugs": {
     "url": "https://github.com/n0stycat/MEAN/issues"
   },
-  "homepage": "https://github.com/n0stycat/MEAN#readme"
+  "homepage": "https://github.com/n0stycat/MEAN#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  }
 }
