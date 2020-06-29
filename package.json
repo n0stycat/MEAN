@@ -1,0 +1,23 @@
+{
+  "name": "fullstack",
+  "version": "1.0.0",
+  "description": "fullstack app with express and angular",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/n0stycat/MEAN.git"
+  },
+  "keywords": [
+    "express",
+    "angular"
+  ],
+  "author": "Vladislav Ostapchuk",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/n0stycat/MEAN/issues"
+  },
+  "homepage": "https://github.com/n0stycat/MEAN#readme"
+}
