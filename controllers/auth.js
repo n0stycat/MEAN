@@ -2,13 +2,14 @@ const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 const User = require('../models/User')
 const keys = require('../config/keys')
+const errorHandler = require('../utils/errorHandler')
 
-module.exports.login = async function(req,res) {
+module.exports.login = async function (req, res) {
     const candidate = await User.findOne({email: req.body.email})
 
     if (candidate) {
         const passwordResult = bcrypt.compareSync(req.body.password, candidate.password)
-        if(passwordResult) {
+        if (passwordResult) {
             const token = jwt.sign({
                 email: candidate.email,
                 userId: candidate._id
@@ -29,10 +30,10 @@ module.exports.login = async function(req,res) {
     }
 }
 
-module.exports.register = async function(req,res) {
-     const candidate = await User.findOne({email: req.body.email})
+module.exports.register = async function (req, res) {
+    const candidate = await User.findOne({email: req.body.email})
 
-    if(candidate) {
+    if (candidate) {
         res.status(409).json({
             message: 'Такой email уже занят. Попробуйте другой.'
         })
@@ -47,8 +48,8 @@ module.exports.register = async function(req,res) {
         try {
             await user.save()
             res.status(201).json(user)
-        } catch(e) {
-
+        } catch (e) {
+            errorHandler(res, e)
         }
     }
 }
