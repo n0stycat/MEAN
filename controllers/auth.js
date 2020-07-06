@@ -30,7 +30,6 @@ module.exports.login = async function(req,res) {
 }
 
 module.exports.register = async function(req,res) {
-    // email password
      const candidate = await User.findOne({email: req.body.email})
 
     if(candidate) {
