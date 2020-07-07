@@ -24,4 +24,4 @@ const limits = {
 }
 
 // storage: storage, fileFilter: fileFilter, limits: limits
-module.exporst = multer({storage, fileFilter, limits})
+module.exports = multer({storage, fileFilter, limits})
