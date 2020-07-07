@@ -9,14 +9,14 @@ module.exports.getAll = async function (req, res) {
     }
 
     // Дата старта
-    if(req.query.start) {
+    if (req.query.start) {
         query.date = {
             //Больше или равно
             $gte: req.query.start
         }
     }
 
-    if(req.query.end){
+    if (req.query.end) {
         if (!query.date) {
             query.date = {}
         }
@@ -25,7 +25,7 @@ module.exports.getAll = async function (req, res) {
         query.date['$lte'] = req.query.end
     }
 
-    if(req.query.order) {
+    if (req.query.order) {
         query.order = +req.query.order
     }
 

@@ -41,7 +41,7 @@ module.exports.update = async function (req, res) {
             {_id: req.params.id},
             {$set: req.body},
             {new: true}
-            )
+        )
         res.status(201).json(position)
     } catch (e) {
         errorHandler(res, e)

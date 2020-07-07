@@ -46,7 +46,7 @@ module.exports.update = async function (req, res) {
     const updated = {
         name: req.body.name
     }
-    if(req.file) {
+    if (req.file) {
         updated.imageSrc = req.file.path
     }
     try {
