@@ -3,8 +3,9 @@ export interface User {
   password: string
 }
 
-// "?" since backend creates those fields
-// so frontend dont know about them at the time of creation
+export interface Message {
+  message: string
+}
 
 export interface Category {
   name: string
