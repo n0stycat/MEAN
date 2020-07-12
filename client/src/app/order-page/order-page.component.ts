@@ -2,6 +2,7 @@ import {AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild} from
 import {NavigationEnd, Router} from "@angular/router";
 import {MaterialInstance, MaterialService} from "../shared/classes/material.service";
 import {OrderService} from "./order.service";
+import {OrderPosition} from "../shared/interfaces";
 
 @Component({
   selector: 'app-order-page',
@@ -16,7 +17,7 @@ export class OrderPageComponent implements OnInit, OnDestroy, AfterViewInit{
   isRoot: boolean
 
   constructor(private router: Router,
-              private order: OrderService) {
+              public order: OrderService) {
   }
 
   ngOnInit(): void {
@@ -26,7 +27,6 @@ export class OrderPageComponent implements OnInit, OnDestroy, AfterViewInit{
         this.isRoot = this.router.url === '/order'
       }
     })
-    console.log(this.order) // TODO delete later, just a fix for typescript error (unused injection)
   }
 
   ngOnDestroy() {
@@ -37,6 +37,11 @@ export class OrderPageComponent implements OnInit, OnDestroy, AfterViewInit{
     this.modal = MaterialService.initModal(this.modalRef)
   }
 
+  removePosition(orderPosition: OrderPosition) {
+    this.order.remove(orderPosition)
+
+  }
+
   open() {
     this.modal.open()
   }
@@ -44,6 +49,7 @@ export class OrderPageComponent implements OnInit, OnDestroy, AfterViewInit{
   cancel() {
     this.modal.close()
   }
+
   submit() {
     this.modal.close()
   }
