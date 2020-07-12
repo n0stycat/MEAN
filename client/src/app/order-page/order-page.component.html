@@ -46,11 +46,12 @@
     <button
       class="modal-action waves-effect waves-black btn-flat"
       (click)="cancel()"
+      [disabled]="pending"
     >Отмена</button>
     <button
       class="modal-action btn waves-effect"
       (click)="submit()"
-      [disabled]="order.list.length === 0"
+      [disabled]="order.list.length === 0 || pending"
     >Подтвердить</button>
   </div>
 </div>
