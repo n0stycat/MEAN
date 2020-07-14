@@ -2,22 +2,28 @@
   <div class="fr">
     <div class="col order">
       <div class="input-field inline order-position-input">
-        <input id="number" min="1" type="number">
+        <input [(ngModel)]="order" id="number" min="1" type="number">
         <label for="number">Номер заказа</label>
       </div>
     </div>
     <div class="col filter-pickers">
       <div class="input-field">
-        <input class="datepicker" type="text">
-        <label>Начало</label>
+        <input #start id="dateStart" type="text">
+        <label for="dateStart">Начало</label>
       </div>
 
       <div class="input-field">
-        <input class="datepicker" type="text">
-        <label>Конец</label>
+        <input #end id="dateEnd" type="text">
+        <label for="dateEnd">Конец</label>
       </div>
     </div>
   </div>
 
-  <button class="btn waves-effect wavers-light btn-small">Применить фильтр</button>
+  <button
+    (click)="submitFilter()"
+    [disabled]="!isValid"
+    class="btn waves-effect wavers-light btn-small"
+  >
+    Применить фильтр
+  </button>
 </div>

@@ -2,7 +2,7 @@ import {AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild} from
 import {MaterialInstance, MaterialService} from "../shared/classes/material.service";
 import {OrdersService} from "../shared/services/orders.service";
 import {Subscription} from "rxjs";
-import {Order} from "../shared/interfaces";
+import {Filter, Order} from "../shared/interfaces";
 
 const STEP = 2
 
@@ -18,6 +18,7 @@ export class HistoryPageComponent implements OnInit, OnDestroy, AfterViewInit {
   oSub: Subscription
   isFilterVisible = false
   orders: Order[] = []
+  filter: Filter = {}
 
   offset = 0
   limit = STEP
@@ -44,6 +45,20 @@ export class HistoryPageComponent implements OnInit, OnDestroy, AfterViewInit {
     this.tooltip = MaterialService.initTooltip((this.tooltipRef))
   }
 
+  // TODO | Server is writing date based off GMT+0300, documents filtered from 13.07.2020 00:00 to 03:00 cannot be filtered at 13.07.2020, redo date filtering or redo server date writing?
+  applyFilter(filter: Filter) {
+    this.orders = []
+    this.offset = 0
+    this.filter = filter
+    this.reloading = true
+    this.fetch()
+    debugger
+  }
+
+  isFiltered(): boolean {
+    return Object.keys(this.filter).length !== 0
+  }
+
   loadMore() {
     this.offset += STEP
     this.loading = true
@@ -51,10 +66,11 @@ export class HistoryPageComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   private fetch() {
-    const params = {
+    const params = Object.assign({}, this.filter, {
       offset: this.offset,
       limit: this.limit
-    }
+    })
+
     this.oSub = this.ordersService.fetch(params).subscribe(orders => {
       this.orders = this.orders.concat(orders)
       this.noMoreOrders = orders.length < STEP
