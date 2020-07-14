@@ -1,0 +1,29 @@
+<div class="filter">
+  <div class="fr">
+    <div class="col order">
+      <div class="input-field inline order-position-input">
+        <input [(ngModel)]="order" id="number" min="1" type="number">
+        <label for="number">Номер заказа</label>
+      </div>
+    </div>
+    <div class="col filter-pickers">
+      <div class="input-field">
+        <input #start id="dateStart" type="text">
+        <label for="dateStart">Начало</label>
+      </div>
+
+      <div class="input-field">
+        <input #end id="dateEnd" type="text">
+        <label for="dateEnd">Конец</label>
+      </div>
+    </div>
+  </div>
+
+  <button
+    (click)="submitFilter()"
+    [disabled]="!isValid"
+    class="btn waves-effect wavers-light btn-small"
+  >
+    Применить фильтр
+  </button>
+</div>
