@@ -38,8 +38,13 @@ export class MaterialService {
   static initDatepicker(ref: ElementRef, onClose: () => void): MaterialDatepicker {
     return M.Datepicker.init(ref.nativeElement, {
       format: 'dd.mm.yyyy',
+      firstDay: 1,
       showClearBtn: true,
       onClose
     })
+  }
+
+  static initTapTarget(ref: ElementRef): MaterialInstance {
+    return M.TapTarget.init(ref.nativeElement)
   }
 }
