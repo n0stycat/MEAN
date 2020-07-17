@@ -1,0 +1,41 @@
+<div *ngIf="positions$ | async as positions; else loader">
+  <table *ngIf="positions.length !== 0; else empty" class="highlight">
+    <thead>
+    <tr>
+      <th>Название</th>
+      <th>Стоимость</th>
+      <th>Количество</th>
+      <th></th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr *ngFor="let position of positions">
+      <td>{{position.name}}</td>
+      <td>{{position.cost}}</td>
+      <td>
+        <div class="input-field inline order-position-input">
+          <!--Missing label for input? Should i add it, its table?-->
+          <input [(ngModel)]="position.quantity" min="1" type="number" value="1">
+        </div>
+      </td>
+      <td>
+        <button
+          (click)="addToOrder(position)"
+          [disabled]="!position.quantity"
+          class="btn waves-effect wavers-light btn-small"
+        >Добавить
+        </button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<ng-template #empty>
+  <div class="center">В данной категории пока нет позиций.</div>
+</ng-template>
+
+<ng-template #loader>
+  <app-loader></app-loader>
+</ng-template>
