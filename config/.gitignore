@@ -1,0 +1,9 @@
+# .gitignore sample
+###################
+
+# Ignore selected files in this dir...
+/keys.dev.js
+
+# ... except for this one.
+!.gitignore
+
