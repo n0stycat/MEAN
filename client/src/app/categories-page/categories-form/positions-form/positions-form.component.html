@@ -3,25 +3,25 @@
     <div class="page-subtitle">
       <h4>Позиции:</h4>
       <button
-        class="waves-effect waves-light btn grey darken-1 btn-small"
         (click)="onAddPosition()"
+        class="waves-effect waves-light btn grey darken-1 btn-small"
       >
         Добавить позицию
       </button>
     </div>
 
     <div *ngIf="!loading; else loader">
-      <div class="collection" *ngIf="positions.length !== 0; else empty">
+      <div *ngIf="positions.length !== 0; else empty" class="collection">
         <a
+          (click)="onSelectPosition(position)"
           *ngFor="let position of positions"
           class="collection-item collection-item-icon"
-          (click)="onSelectPosition(position)"
         >
         <span>
           {{position.name}} <strong>{{position.cost}} руб.</strong>
         </span>
           <span>
-          <i class="material-icons" (click)="onDeletePosition($event, position)">delete</i>
+          <i (click)="onDeletePosition($event, position)" class="material-icons">delete</i>
         </span>
         </a>
       </div>
@@ -34,16 +34,16 @@
     </ng-template>
   </div>
 </div>
-<form [formGroup]="form" (ngSubmit)="onSubmit()">
-  <div class="modal" #modal>
+<form (ngSubmit)="onSubmit()" [formGroup]="form">
+  <div #modal class="modal">
     <div class="modal-content">
       <h4 class="mb1">Добавить позицию</h4>
       <div class="input-field">
         <input
+          [ngClass]="{'invalid': form.get('name').invalid && form.get('name').touched}"
           formControlName="name"
           id="pos-name"
           type="text"
-          [ngClass]="{'invalid': form.get('name').invalid && form.get('name').touched}"
         >
         <label for="pos-name">Название</label>
         <span
@@ -55,11 +55,11 @@
       </div>
       <div class="input-field">
         <input
-          id="pos-cost"
-          type="number"
-          min="1"
-          formControlName="cost"
           [ngClass]="{'invalid': form.get('cost').invalid && form.get('cost').touched}"
+          formControlName="cost"
+          id="pos-cost"
+          min="1"
+          type="number"
         >
         <label for="pos-cost">Цена</label>
         <span
@@ -72,17 +72,17 @@
     </div>
     <div class="modal-footer">
       <button
-        type="button"
         (click)="onCancel()"
-        class="modal-action waves-effect waves-black btn-flat"
         [disabled]="form.disabled"
+        class="modal-action waves-effect waves-black btn-flat"
+        type="button"
       >
         Отмена
       </button>
       <button
+        [disabled]="form.invalid || form.invalid"
         class="modal-action btn waves-effect"
         type="submit"
-        [disabled]="form.invalid || form.invalid"
       >
         Сохранить
       </button>

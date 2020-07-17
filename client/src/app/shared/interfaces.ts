@@ -1,5 +1,5 @@
 export interface User {
-  email: string,
+  email: string
   password: string
 }
 
@@ -17,10 +17,10 @@ export interface Category {
 export interface Position {
   name: string
   cost: number
-  user?: string
   category: string
+  user?: string
   _id?: string
-  quantity?: number //virtual
+  quantity?: number
 }
 
 export interface Order {
@@ -42,4 +42,27 @@ export interface Filter {
   start?: Date
   end?: Date
   order?: number
+}
+
+export interface OverviewPage {
+  orders: OverviewPageItem
+  gain: OverviewPageItem
+}
+
+export interface OverviewPageItem {
+  percent: number
+  compare: number
+  yesterday: number
+  isHigher: boolean
+}
+
+export interface InformationPage {
+  average: number
+  chart: InformationChartItem[]
+}
+
+export interface InformationChartItem {
+  gain: number
+  order: number
+  label: string
 }

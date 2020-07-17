@@ -8,11 +8,11 @@
 </div>
 
 <div
-  class="row"
   *ngIf="categories$ | async as categories; else loader"
+  class="row"
 >
   <div class="col s12">
-    <div class="collection" *ngIf="categories.length !== 0; else empty">
+    <div *ngIf="categories.length !== 0; else empty" class="collection">
       <a
         *ngFor="let category of categories"
         [routerLink]="['/categories', category._id]"

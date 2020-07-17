@@ -27,7 +27,7 @@ export class RegisterPageComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    if(this.aSub) {
+    if (this.aSub) {
       this.aSub.unsubscribe()
     }
   }

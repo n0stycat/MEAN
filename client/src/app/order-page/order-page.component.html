@@ -44,14 +44,16 @@
   </div>
   <div class="modal-footer">
     <button
-      class="modal-action waves-effect waves-black btn-flat"
       (click)="cancel()"
       [disabled]="pending"
-    >Отмена</button>
+      class="modal-action waves-effect waves-black btn-flat"
+    >Отмена
+    </button>
     <button
-      class="modal-action btn waves-effect"
       (click)="submit()"
       [disabled]="order.list.length === 0 || pending"
-    >Подтвердить</button>
+      class="modal-action btn waves-effect"
+    >Подтвердить
+    </button>
   </div>
 </div>

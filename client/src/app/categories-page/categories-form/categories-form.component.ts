@@ -20,6 +20,7 @@ export class CategoriesFormComponent implements OnInit {
   imagePreview: string
   isNew = true
   category: Category
+
   constructor(private route: ActivatedRoute,
               private categoriesService: CategoriesService,
               private router: Router) {
@@ -100,7 +101,7 @@ export class CategoriesFormComponent implements OnInit {
     }
 
     obs$.subscribe(
-      category=> {
+      category => {
         this.category = category
         MaterialService.toast('Изменения сохранены.')
         this.form.enable()

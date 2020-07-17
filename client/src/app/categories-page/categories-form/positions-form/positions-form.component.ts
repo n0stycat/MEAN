@@ -2,7 +2,7 @@ import {AfterViewInit, Component, ElementRef, Input, OnDestroy, OnInit, ViewChil
 import {PositionService} from "../../../shared/services/position.service";
 import {Position} from "../../../shared/interfaces";
 import {MaterialInstance, MaterialService} from "../../../shared/classes/material.service";
-import {FormGroup, FormControl, Validators} from "@angular/forms";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-positions-form',
@@ -67,7 +67,7 @@ export class PositionsFormComponent implements OnInit, AfterViewInit, OnDestroy 
       this.positionService.delete(position).subscribe(
         response => {
           const idx = this.positions.findIndex(p => p._id === position._id)
-          this.positions.splice(idx,1)
+          this.positions.splice(idx, 1)
           MaterialService.toast(response.message)
         },
         error => MaterialService.toast(error.error.message)
@@ -104,7 +104,6 @@ export class PositionsFormComponent implements OnInit, AfterViewInit, OnDestroy 
         },
         error => MaterialService.toast(error.error.message),
         completed
-
       )
     } else {
       this.positionService.create(newPosition).subscribe(
