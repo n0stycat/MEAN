@@ -14,7 +14,7 @@
     </button>
   </span>
 </div>
-
+<!--Add more advanced check for image files, delete replaced images to avoid cluttering-->
 <div class="row">
   <form (ngSubmit)="onSubmit()" [formGroup]="form" class="col s12 l6">
     <div class="input-field">
@@ -41,6 +41,7 @@
         (change)="onFileUpload($event)"
         class="dn"
         type="file"
+        accept='image/*'
       >
       <button
         (click)="triggerClick()"
