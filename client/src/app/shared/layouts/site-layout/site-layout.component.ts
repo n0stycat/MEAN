@@ -13,11 +13,12 @@ export class SiteLayoutComponent implements AfterViewInit {
   @ViewChild('floating') floatingRef: ElementRef
   links = [
     {url: '/overview', name: 'Обзор'},
-    {url: '/analytics', name: 'Аналитика'},
+    {url: '/information', name: 'Аналитика'},
     {url: '/history', name: 'История'},
     {url: '/order', name: 'Добавить заказ'},
     {url: '/categories', name: 'Ассортимент'},
   ]
+
   constructor(private auth: AuthService, private router: Router) {
   }
 

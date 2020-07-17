@@ -11,6 +11,7 @@ import {Observable} from "rxjs";
 export class CategoriesPageComponent implements OnInit {
 
   categories$: Observable<Category[]>
+
   constructor(private categoriesService: CategoriesService) {
   }
 

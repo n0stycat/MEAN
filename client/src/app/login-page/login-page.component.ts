@@ -28,7 +28,7 @@ export class LoginPageComponent implements OnInit, OnDestroy {
     })
 
     this.route.queryParams.subscribe((params: Params) => {
-      if(params['registered']) {
+      if (params['registered']) {
         MaterialService.toast('Теперь вы можете зайти в систему используя свои данные')
       } else if (params['accessDenied']) {
         MaterialService.toast('Для начала авторизуйтесь в системе')
@@ -39,7 +39,7 @@ export class LoginPageComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    if(this.aSub) {
+    if (this.aSub) {
       this.aSub.unsubscribe()
     }
   }

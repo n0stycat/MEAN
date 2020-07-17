@@ -1,15 +1,15 @@
 import {AfterViewInit, Component, ElementRef, OnDestroy, ViewChild} from '@angular/core';
-import {AnalyticsService} from "../shared/services/analytics.service";
-import {AnalyticsPage} from "../shared/interfaces";
+import {InformationService} from "../shared/services/information.service";
+import {InformationPage} from "../shared/interfaces";
 import {Chart} from "chart.js"
 import {Subscription} from "rxjs";
 
 @Component({
-  selector: 'app-analytics-page',
-  templateUrl: './analytics-page.component.html',
-  styleUrls: ['./analytics-page.component.css']
+  selector: 'app-information-page',
+  templateUrl: './information-page.component.html',
+  styleUrls: ['./information-page.component.css']
 })
-export class AnalyticsPageComponent implements AfterViewInit, OnDestroy {
+export class InformationPageComponent implements AfterViewInit, OnDestroy {
 
   @ViewChild('gain') gainRef: ElementRef
   @ViewChild('order') orderRef: ElementRef
@@ -19,7 +19,7 @@ export class AnalyticsPageComponent implements AfterViewInit, OnDestroy {
   pending = true
 
 
-  constructor(private service: AnalyticsService) {
+  constructor(private service: InformationService) {
   }
 
   ngAfterViewInit() {
@@ -34,7 +34,7 @@ export class AnalyticsPageComponent implements AfterViewInit, OnDestroy {
     }
 
 
-    this.aSub = this.service.getAnalytics().subscribe((data: AnalyticsPage) => {
+    this.aSub = this.service.getInformation().subscribe((data: InformationPage) => {
       this.average = data.average
 
       gainConfig.labels = data.chart.map(item => item.label)

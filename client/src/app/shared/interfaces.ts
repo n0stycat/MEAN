@@ -56,12 +56,12 @@ export interface OverviewPageItem {
   isHigher: boolean
 }
 
-export interface AnalyticsPage {
+export interface InformationPage {
   average: number
-  chart: AnalyticsChartItem[]
+  chart: InformationChartItem[]
 }
 
-export interface AnalyticsChartItem {
+export interface InformationChartItem {
   gain: number
   order: number
   label: string

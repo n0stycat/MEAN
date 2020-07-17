@@ -6,9 +6,9 @@
   </h4>
   <span>
     <button
+      (click)="deleteCategory()"
       *ngIf="!isNew"
       class="btn btn-small red"
-      (click)="deleteCategory()"
     >
       <i class="material-icons">delete</i>
     </button>
@@ -16,18 +16,18 @@
 </div>
 
 <div class="row">
-  <form class="col s12 l6" [formGroup]="form" (ngSubmit)="onSubmit()">
+  <form (ngSubmit)="onSubmit()" [formGroup]="form" class="col s12 l6">
     <div class="input-field">
       <input
+        [ngClass]="{'invalid': form.get('name').invalid && form.get('name').touched}"
         formControlName="name"
         id="name"
         type="text"
-        [ngClass]="{'invalid': form.get('name').invalid && form.get('name').touched}"
       >
       <label for="name">Название</label>
       <span
-        class="helper-text red-text"
         *ngIf="form.get('name').invalid && form.get('name').touched"
+        class="helper-text red-text"
       >
         <span *ngIf="form.get('name').errors['required']">
           Имя категории не может быть пустым.
@@ -37,16 +37,16 @@
 
     <div>
       <input
-        type="file"
-        class="dn"
-        (change)="onFileUpload($event)"
         #input
+        (change)="onFileUpload($event)"
+        class="dn"
+        type="file"
       >
       <button
         (click)="triggerClick()"
         [disabled]="form.disabled"
-        type="button"
         class="waves-effect waves-light btn orange lighten-2 mb2"
+        type="button"
       >
         <i class="material-icons left">backup</i>
         Загрузить изображение
@@ -55,9 +55,9 @@
 
     <div>
       <button
-        type="submit"
         [disabled]="form.invalid || form.disabled"
-        class="waves-effect waves-light btn">
+        class="waves-effect waves-light btn"
+        type="submit">
         Сохранить изменения
       </button>
     </div>
@@ -65,10 +65,10 @@
 
   <div class="col s12 l4 center">
     <img
-      class="responsive-img h200"
+      *ngIf="imagePreview"
       [src]="imagePreview"
       alt="imagePreview"
-      *ngIf="imagePreview"
+      class="responsive-img h200"
     >
   </div>
 </div>

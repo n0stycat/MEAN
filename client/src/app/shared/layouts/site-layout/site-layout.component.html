@@ -1,13 +1,13 @@
 <!--SIDEBAR-->
 <ul class="sidenav sidenav-fixed a-sidenav">
   <li><h4>Newborn</h4></li>
-  <li class="bold" *ngFor="let link of links" routerLinkActive="active">
+  <li *ngFor="let link of links" class="bold" routerLinkActive="active">
     <a [routerLink]="[link.url]" class="waves-effect waves-orange">
       {{link.name}}
     </a>
   </li>
-  <li class="bold last" (click)="logout($event)">
-    <a href="#" class="waves-effect waves-orange">
+  <li (click)="logout($event)" class="bold last">
+    <a class="waves-effect waves-orange" href="#">
       Выйти
     </a>
   </li>
@@ -19,7 +19,7 @@
 
 <!--Floating button-->
 
-<div class="fixed-action-btn" #floating>
+<div #floating class="fixed-action-btn">
   <a class="btn-floating btn-large red">
     <i class="large material-icons">add</i>
   </a>
